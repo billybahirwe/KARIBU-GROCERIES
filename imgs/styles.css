@@ -1,16 +1,17 @@
-<<<<<<< HEAD
- /* #main {
- *margin-top: 250px; 
+HEAD
+ #main {
+ margin-top: 250px; 
 
-}  */
-=======
+} 
 #main {
  margin-top: 250px; 
 
 } 
->>>>>>> b56858e20aea5fb384d662a51ffa5c4729e32533
+
 
 .containe{
     margin-left: 250px;
-    padding: 20px;
-} 
+        padding: 20px;
+    } 
+
+
