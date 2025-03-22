@@ -1,0 +1,47 @@
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+        .image-container {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        h2 {
+            text-align: center;
+        }
+        label, input, select, button {
+            width: 100%;
+            padding: 6px;
+            margin-top: 5px;
+        }
+        button {
+            background: rgb(119, 153, 172);
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background: rgb(52, 49, 49);
+        }
+        .links {
+            margin-top: 10px;
+        }
+        .links a {
+            display: block;
+            text-decoration: none;
+            color: rgb(22, 127, 169);
+            margin-top: 5px;
+        }
+    

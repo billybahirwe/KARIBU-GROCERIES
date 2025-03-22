@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KGL Produce Registration</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles-special.css">
+
+</head>
+<body>
+    <h2>Produce</h2>
+    <form id="produceForm">
+        <div class="produce">
+            <label><a href="beansDetails.html">Beans:</a></label>
+            <img src="../images/Beans.jpeg" alt="Beans">
+            <!-- <input type="number" name="beans" placeholder="Enter quantity" required> -->
+        </div>
+        <div class="produce">
+            <label><a href="maizeDetails.html">Grain Maize:</a></label>
+            <img src="../images/Maize.jpeg" alt="Grain Maize">
+            <!-- <input type="number" name="maize" placeholder="Enter quantity" required> -->
+        </div>
+        <div class="produce">
+            <label> <a href="cowpeasDetails.html">Cow Peas: </a></label>
+            <img src="../images/cow peas3.jpg" alt="Cow Peas">
+            <!-- <input type="number" name="cowpeas" placeholder="Enter quantity" required> -->
+        </div>
+        <div class="produce">
+            <label>  <a href="g-nutsDetails.html">G-Nuts: </a></label>
+            <img src="../images/g-nuts3.jpg" alt="G-Nuts">
+            <!-- <input type="number" name="gnuts" placeholder="Enter quantity" required> -->
+        </div>
+        <div class="produce">
+            <label><a href="soybeansDetails.html">Soybeans: </a></label>
+            <img src="../images/soybeans3.jpg" alt="Soybeans">
+            <!-- <input type="number" name="soybeans" placeholder="Enter quantity" required> -->
+        </div>
+        <div class="links">
+            <a href="login.html">Go Back</a>
+        </div>
+        <!-- <button type="submit">Register</button> -->
+    </form>
+
+    <!-- <script>
+        document.getElementById('produceForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            let inputs = document.querySelectorAll('input[type="number"]');
+            let valid = true;
+            
+            inputs.forEach(input => {
+                if (input.value.trim() === '' || input.value <= 0) {
+                    valid = false;
+                    input.style.border = '2px solid red';
+                } else {
+                    input.style.border = '1px solid #ccc';
+                }
+            });
+            
+            if (valid) {
+                alert('Produce Registered Successfully!');
+                this.reset();
+            } else {
+                alert('Please enter valid quantities for all products.');
+            }
+        });
+    </script> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
