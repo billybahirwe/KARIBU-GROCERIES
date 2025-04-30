@@ -1,0 +1,102 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Make body full height for footer placement */
+  html, body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Navbar styles */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 8px rgba(251, 251, 251, 0.2);
+  }
+  
+  /* Left links */
+  .nav-left a {
+    text-decoration: none;
+    color: #fcf9f9;
+    font-weight: bold;
+    font-size: 1.1rem;
+  }
+  
+  /* Center links */
+  .nav-center a {
+    text-decoration: none;
+    color: #f6f7f9;
+    font-weight: bold;
+    margin: 0 1rem;
+    font-size: 1.1rem;
+  }
+  
+  /* Logo (KGL) colorful */
+  .logo {
+    font-family: 'Dancing Script', cursive;
+    font-size: 200%;
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: #333;
+  }
+  
+  /* .logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.8rem;
+    font-weight: 900;
+  } */
+  
+  .k {
+    color:#e2d40c; /* Orange*/
+  }
+  
+  .g {
+    color: #e811d6; /* Blue */
+  }
+  
+  .l {
+    color: #2ECC71; /* Green */
+  }
+  
+  /* Main content */
+  main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem 2rem;
+    text-align: center;
+  }
+  
+  /* About Section */
+  .about-company h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #fcfdfe;
+  }
+  
+  .about-company p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    color: #faf6f6;
+  }
+  
+  /* Footer styles */
+  .footer {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: auto; /* pushes footer to bottom */
+  }
+  

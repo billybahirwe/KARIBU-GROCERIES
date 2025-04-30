@@ -1,0 +1,58 @@
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title Director Dashboard
+    link(rel='stylesheet' href='/css/directorDash.css')
+    script(defer src='/js/directorDash.js')
+  body
+    nav.navbar.navbar-expand-lg.navbar-light.bg-light
+      .nav-right
+        .logo
+          span.k K
+          span.g G
+          span.l L
+      
+      div.collapse.navbar-collapse(id='navbarNav')
+        ul.navbar-nav
+          li.nav-item
+            a.nav-link(href='/directorDash') Dashboard
+          li.nav-item
+            a.nav-link(href='/logout') Log Out
+
+    main.dashboard-container
+      h2 Welcome Director Orban
+
+      .stats
+        .card
+          h3 Total Tonnage Sold Per Branch
+          ul#tonnagePerBranch
+            if tonnagePerBranch.length
+              each item in tonnagePerBranch
+                li #{item._id}: #{item.totalTonnage} tons
+            else
+              li No data available
+
+        .card
+          h3 Total Amount Received Per Branch
+          ul#amountPerBranch
+            if amountPerBranch.length
+              each item in amountPerBranch
+                li #{item._id}: UGX #{item.totalAmount.toLocaleString()}
+            else
+              li No data available
+
+        .card
+          h3 Total Credit Sales
+          if totalCreditSales
+            p#totalCreditSales UGX #{totalCreditSales.toLocaleString()}
+          else
+            p#totalCreditSales UGX 0
+
+        .card
+          h3 Overall Sales Performance
+          if overallPerformance
+            p#overallPerformance UGX #{overallPerformance.toLocaleString()}
+          else
+            p#overallPerformance UGX 0

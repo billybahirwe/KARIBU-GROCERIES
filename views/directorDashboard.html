@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Director Dashboard</title>
+  <link rel="stylesheet" href="/css/directorDashboard.css" />
+  <script defer src="/js/directorDashboard.js"></script>
+</head>
+<body>
+  <nav class="navbar">
+    <a href="/director/dashboard">Dashboard</a>
+    <a href="/sales/sales-list">Sales List</a>
+    <a href="/logout">Logout</a>
+  </nav>
+
+  <main class="dashboard-container">
+    <h2>Welcome Director Orban</h2>
+    <div class="stats">
+      <div class="card">
+        <h3>Total Tonnage Sold Per Branch</h3>
+        <ul id="tonnagePerBranch"></ul>
+      </div>
+      <div class="card">
+        <h3>Total Amount Received Per Branch</h3>
+        <ul id="amountPerBranch"></ul>
+      </div>
+      <div class="card">
+        <h3>Total Credit Sales</h3>
+        <p id="totalCreditSales"></p>
+      </div>
+      <div class="card">
+        <h3>Overall Sales Performance</h3>
+        <p id="overallPerformance"></p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
+<script defer src="/js/directorDashboard.js"></script>
+
+

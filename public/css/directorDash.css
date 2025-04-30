@@ -1,0 +1,116 @@
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #f4f7f9;
+  color: #333;
+  padding: 20px;
+}
+
+/* Navbar */
+.navbar {
+  background-color: #005f73 !important;
+  padding: 10px 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+  font-weight: bold;
+  color: #ffffff !important;
+  font-size: 24px;
+}
+
+.navbar-nav .nav-link {
+  color: #ffffff !important;
+  margin-right: 15px;
+  font-weight: 500;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #ffd166 !important;
+}
+
+/* Dashboard Container */
+.dashboard-container {
+  margin-top: 30px;
+  padding: 20px;
+}
+
+/* Heading */
+.dashboard-container h2 {
+  font-size: 28px;
+  margin-bottom: 30px;
+  color: #023047;
+}
+
+/* Stats Section */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+/* Card Styling */
+.card {
+  background-color: #ffffff;
+  border-left: 5px solid #219ebc;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card h3 {
+  font-size: 20px;
+  color: #023047;
+  margin-bottom: 10px;
+}
+
+.card p,
+.card li {
+  font-size: 16px;
+  color: #333;
+  line-height: 1.5;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .navbar-nav {
+    background-color: #005f73;
+    padding: 10px;
+  }
+
+  .navbar-nav .nav-link {
+    margin: 10px 0;
+  }
+}
+
+/* Logo (KGL) colorful */
+.logo {
+  font-family: 'Dancing Script', cursive;
+  font-size: 200%;
+  font-weight: 900;
+  letter-spacing: 2px;
+  color: #333;
+}
+
+.k {
+  color: #e2d40c; /* Orange-red */
+}
+
+.g {
+  color: #e811d6; /* Blue */
+}
+
+.l {
+  color: #2ECC71; /* Green */
+}

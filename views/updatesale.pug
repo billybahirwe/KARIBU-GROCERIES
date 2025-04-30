@@ -1,0 +1,65 @@
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title Update Sale
+    link(rel='stylesheet', href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/css/sale.css')
+
+  body
+    .container.mt-5
+      h2.text-center.mb-4 Update Sale Record
+
+      form(action=`/sales/updateSale/${sale._id}`, method='POST')
+        .mb-3
+          label(for='produceName') Produce Name:
+          input#produceName.form-control(type='text', name='produceName', value=sale.produceName)
+          if error.produceName
+            span.text-danger= error.produceName
+
+        .mb-3
+          label(for='tonnage') Tonnage (kgs):
+          input#tonnage.form-control(type='number', name='tonnage', value=sale.tonnage)
+          if error.tonnage
+            span.text-danger= error.tonnage
+
+        .mb-3
+          label(for='amountPaid') Amount Paid (UGX):
+          input#amountPaid.form-control(type='number', name='amountPaid', value=sale.amountPaid)
+          if error.amountPaid
+            span.text-danger= error.amountPaid
+
+        .mb-3
+          label(for='buyerName') Buyer’s Name:
+          input#buyerName.form-control(type='text', name='buyerName', value=sale.buyerName)
+          if error.buyerName
+            span.text-danger= error.buyerName
+
+        .mb-3
+          label(for='salesAgent') Sales Agent’s Name:
+          input#salesAgent.form-control(type='text', name='salesAgent', value=sale.salesAgent)
+          if error.salesAgent
+            span.text-danger= error.salesAgent
+
+        .mb-3
+          label(for='branch') Branch:
+          select#branch.form-control(name='branch')
+            option(value='') -- Select Branch --
+            option(value='Maganjo', selected=sale.branch === 'Maganjo') Maganjo
+            option(value='Matugga', selected=sale.branch === 'Matugga') Matugga
+          if error.branch
+            span.text-danger= error.branch
+
+        .mb-3
+          label(for='dateTime') Date & Time:
+          input#dateTime.form-control(type='datetime-local', name='dateTime', value=sale.dateTime.toISOString().slice(0, 16))
+          if error.dateTime
+            span.text-danger= error.dateTime
+
+        button.btn.btn-primary(type='submit') Update Sale
+
+      if error
+        p.text-danger.mt-3= error.global
+
+    script(src='/js/script.js', defer)

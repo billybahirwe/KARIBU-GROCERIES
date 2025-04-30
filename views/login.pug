@@ -1,0 +1,26 @@
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title KGL Company Login
+    link(rel='stylesheet', href='/css/background.css')
+    link(rel='stylesheet' href='/css/login.css')
+
+  body
+    .login-container
+      h2 KGL Login
+
+      form(action="/login", method="post", onsubmit="return validateForm()")
+        input#username(type='text' placeholder='Email' name='email')
+        input#password(type='password' placeholder='Password' name='password')
+
+        select(name='branch' required)
+          option(value='') Select Branch
+          option(value='Maganjo') Maganjo
+          option(value='Matugga') Matugga
+
+        p#error-message.error
+        button.btn(type='submit') Login
+
+    script(src='/js/login.js')

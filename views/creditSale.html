@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Credit Sales Form</title>
+  <link rel="stylesheet" href="/css/creditSale.css" />
+  <script defer src="/js/creditSale.js"></script>
+</head>
+<body>
+  <nav class="navbar">
+    <a href="/director/dashboard">Dashboard</a>
+    <a href="/sales/sales-list">Sales List</a>
+    <a href="/logout">Logout</a>
+  </nav>
+
+  <main class="form-container">
+    <h2>Credit Sale Registration</h2>
+    <form id="creditSaleForm" action="/sales/credit" method="POST">
+      <label>Buyer's Name: <input type="text" name="buyerName" required /></label>
+      <label>National ID (NIN): <input type="text" name="nationalId" required /></label>
+      <label>Location: <input type="text" name="location" required /></label>
+      <label>Contact: <input type="tel" name="contact" required /></label>
+      <label>Amount Due (UGX): <input type="number" name="amountDue" required /></label>
+      <label>Sales Agent: <input type="text" name="salesAgent" required /></label>
+      <label>Due Date: <input type="date" name="dueDate" required /></label>
+      <label>Produce Name: <input type="text" name="produceName" required /></label>
+      <label>Produce Type: <input type="text" name="produceType" required /></label>
+      <label>Tonnage (kgs): <input type="number" name="tonnage" required /></label>
+      <label>Date of Dispatch: <input type="date" name="dispatchDate" required /></label>
+      <button type="submit">Submit Credit Sale</button>
+    </form>
+  </main>
+</body>
+</html>
+<script defer src="/js/creditSale.js"></script>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sales List</title>
+  <link rel="stylesheet" href="/css/saleList.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <a href="/director/dashboard">Dashboard</a>
+    <a href="/sales/sales-list">Sales List</a>
+    <a href="/logout">Logout</a>
+  </nav>
+
+  <main class="list-container">
+    <h2>All Sales Records</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Produce</th>
+          <th>Type</th>
+          <th>Tonnage (kgs)</th>
+          <th>Amount (UGX)</th>
+          <th>Buyer</th>
+          <th>Sales Agent</th>
+          <th>Branch</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody id="salesList">
+        <!-- Sales data dynamically inserted here -->
+      </tbody>
+    </table>
+  </main>
+</body>
+</html>
+<script defer src="/js/saleList.js"></script>

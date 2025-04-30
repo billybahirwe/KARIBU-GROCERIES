@@ -1,0 +1,8 @@
+node_modules/
+.vscode/
+.env/
+.loginCredential/
+dist/
+.DS_Store
+npm-debug.log*
+*.log

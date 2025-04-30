@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KGL Company Login</title>
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+<body>
+    <div class="login-container">
+        <h2>KGL Login</h2>
+
+        <div class="container">
+            <div class="container-lg"></div>
+            <div class="container-lg"></div>
+            <div class="container-lg"><button type="submit" class="btn">Sales Agent</button></div>
+        </div>
+        
+        <form onsubmit="return validateForm()">
+            <input type="text" id="username" placeholder="Username">
+            <input type="password" id="password" placeholder="Password">
+            <p id="error-message" class="error"></p>
+            <button type="submit" class="btn">Login</button>
+        </form>
+    </div>
+    <script src="/js/login.js"></script>
+</body>
+</html>

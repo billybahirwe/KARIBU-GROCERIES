@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produce Procurement</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        h2 {
+            text-align: center;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #759fc1;
+            color: white;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #121613;
+        }
+        .error {
+            color: red;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Beans Details</h2>
+        <form id="procurementForm">
+            <input type="text" id="produceName" placeholder="Produce Name" required>
+            <div class="error" id="produceNameError"></div>
+            <input type="text" id="produceType" placeholder="Type" required>
+            <input type="date" id="date" required>
+            <input type="number" id="tonnage" placeholder="Tonnage (kgs)" required>
+            <input type="number" id="cost" placeholder="Cost (UGX)" required>
+            <input type="text" id="dealerName" placeholder="Dealer Name" required>
+            <select id="branch">
+                <option value="Branch A">Maganjo</option>
+                <option value="Branch B">Matugga</option>
+            </select>
+            <input type="tel" id="contact" placeholder="Contact" required>
+            <input type="number" id="price" placeholder="Selling Price" required>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('procurementForm').addEventListener('submit', function(event) {
+            let isValid = true;
+            const produceName = document.getElementById('produceName').value.trim();
+            const produceNameError = document.getElementById('produceNameError');
+            
+            if (produceName === '') {
+                produceNameError.textContent = "Produce Name is required.";
+                isValid = false;
+            } else {
+                produceNameError.textContent = "";
+            }
+
+            if (!isValid) {
+                event.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>

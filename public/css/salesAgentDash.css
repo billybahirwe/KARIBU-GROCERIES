@@ -1,0 +1,92 @@
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 0;
+}
+
+header h1 {
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.container {
+    width: 70%;
+    max-width: 1000px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.dashboard-summary {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.summary-box {
+    background-color: #ecf0f1;
+    padding: 15px;
+    border-radius: 5px;
+    width: 22%;
+    text-align: center;
+}
+
+.summary-box h3 {
+    color: #2c3e50;
+    margin-bottom: 8px;
+    font-size: 1rem;
+}
+
+.summary-box p {
+    font-size: 1.5rem;
+    color: #3498db;
+}
+
+.client-list,
+.recent-activities {
+    margin-bottom: 20px;
+}
+
+.client-list h2,
+.recent-activities h2 {
+    margin-bottom: 10px;
+    color: #2c3e50;
+    font-size: 1.2rem;
+}
+
+.client-item,
+.activity-item {
+    background-color: #ecf0f1;
+    padding: 8px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.activity-item p {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+}
+
+footer {
+    text-align: center;
+    margin-top: 20px;
+    color: #7f8c8d;
+}
+
+/* Navbar styles */
+nav.navbar {
+    margin-bottom: 20px;
+}

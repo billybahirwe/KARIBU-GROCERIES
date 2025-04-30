@@ -1,0 +1,76 @@
+doctype html
+html
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Edit Credit Sale
+    link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css")
+    link(rel="stylesheet", href="/css/creditSaleForm.css")
+  body
+    include ./salesAgentNav
+
+    .container.mt-5
+      h2.text-center.mb-4 Edit Credit Sale
+
+      if error
+        .alert.alert-danger= error
+
+      form(action=`/sales/credit/edit/${credit._id}`, method="POST")
+        .mb-3
+          label.form-label(for="buyerName") Buyer Name
+          input.form-control(type="text", name="buyerName", id="buyerName", required, value=credit.buyerName)
+
+        .mb-3
+          label.form-label(for="nin") National ID (NIN)
+          input.form-control(type="text", name="nin", id="nin", required, value=credit.nin)
+
+        .mb-3
+          label.form-label(for="contact") Contact
+          input.form-control(type="text", name="contact", id="contact", required, value=credit.contact)
+
+        .mb-3
+          label.form-label(for="location") Location
+          input.form-control(type="text", name="location", id="location", required, value=credit.location)
+
+        .mb-3
+          label.form-label(for="produceName") Produce Name
+          input.form-control(type="text", name="produceName", id="produceName", required, value=credit.produceName)
+
+        .mb-3
+          label.form-label(for="produceType") Produce Type
+          select.form-select(name="produceType", id="produceType", required)
+            option(value="") Select a type
+            option(value="Cereal", selected=credit.produceType === 'Cereal') Cereal
+            option(value="Fruit", selected=credit.produceType === 'Fruit') Fruit
+            option(value="Vegetable", selected=credit.produceType === 'Vegetable') Vegetable
+            option(value="Other", selected=credit.produceType === 'Other') Other
+
+        .mb-3
+          label.form-label(for="tonnage") Tonnage (kg)
+          input.form-control(type="number", name="tonnage", id="tonnage", step="0.01", required, value=credit.tonnage)
+
+        .mb-3
+          label.form-label(for="amountDue") Amount Due (UGX)
+          input.form-control(type="number", name="amountDue", id="amountDue", required, value=credit.amountDue)
+
+        // Branch field (read-only input)
+        .mb-3
+          label.form-label(for="branch") Branch
+          input.form-control(type="text", name="branch", id="branch", value=credit.branch readonly)
+
+        .mb-3
+          label.form-label(for="salesAgent") Sales Agent Name
+          input.form-control(type="text", name="salesAgent", id="salesAgent", required, value=credit.salesAgent)
+
+        .mb-3
+          label.form-label(for="dueDate") Due Date
+          input.form-control(type="date", name="dueDate", id="dueDate", required, value=credit.dueDate.toISOString().split('T')[0])
+
+        .mb-3
+          label.form-label(for="dispatchDate") Date of Dispatch
+          input.form-control(type="date", name="dispatchDate", id="dispatchDate", required, value=credit.dispatchDate.toISOString().split('T')[0])
+
+        button.btn.btn-primary(type="submit") Update Credit Sale
+        a.btn.btn-secondary.ms-2(href="/sales/credit/list") Cancel
+
+    script(src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js")

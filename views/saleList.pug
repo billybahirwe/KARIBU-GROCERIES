@@ -1,0 +1,63 @@
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title Sales List
+    link(rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css' integrity='sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH' crossorigin='anonymous')
+    link(rel='stylesheet' href='/css/saleList.css')
+
+  body
+    // Navbar from Credit Sale List
+    nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+      .container-fluid
+        a.navbar-brand(href='/sales/saleList') Karibu Groceries
+        button.navbar-toggler(type='button', data-bs-toggle='collapse', data-bs-target='#navbarNav') 
+          span.navbar-toggler-icon
+        #navbarNav.collapse.navbar-collapse
+          ul.navbar-nav.ms-auto
+            li.nav-item
+              a.nav-link(href='/sales/sale') Register Sale
+            li.nav-item
+              a.nav-link(href='/sales/credit') Register Credit
+            li.nav-item
+              a.nav-link(href='/') Home
+            li.nav-item
+              a.nav-link(href='/logout') Logout
+
+    .container.mt-5
+      h2.text-center.mb-4 Sales List
+
+      if sales.length
+        table.table.table-bordered.table-hover
+          thead.table-light
+            tr
+              th Produce Name
+              th Tonnage (kgs)
+              th Amount Paid (UGX)
+              th Buyer Name 
+              th Sales Agent
+              th Branch
+              th Date
+              th Update 
+              th Delete
+          tbody
+            each sale in sales
+              tr
+                td= sale.produceName
+                td= sale.tonnage
+                td= sale.amountPaid
+                td= sale.buyerName
+                td= sale.salesAgent
+                td= sale.branch
+                td= moment(sale.dateTime).format("DD-MM-YYYY HH:mm")
+                td
+                  a.btn.btn-primary(href=`/sales/updateSale/${sale._id}`) Update
+                td 
+                  form(action='/sales/deleteSale' method='POST')
+                    input(type='hidden', name='id', value=sale._id)
+                    button.btn.btn-danger(type='submit') Delete
+      else
+        p.text-center.text-muted.mt-4 No sales have been recorded yet.
+
+    script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js' integrity='sha384-w76A2z02tPqdj+vP0p6eGmKFD2yL04uHqfFt6dKZtN0nAYjg1zWgZT3Gp1F1h7xk' crossorigin='anonymous')
