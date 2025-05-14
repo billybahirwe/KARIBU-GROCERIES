@@ -23,10 +23,9 @@ const PORT = 3000;
 const saleRoutes = require('./routes/saleRoutes');
 const authRoutes = require('./routes/authRoutes');
 const produceRoutes = require('./routes/produceRoutes');
-const managerRoutes = require('./routes/managerRoutes');
-const salesAgentRoutes = require('./routes/salesAgentRoutes');
 const creditSalesRoutes = require('./routes/creditSaleRoutes');
 const directorRoutes = require('./routes/directorRoutes');
+const managerDashRoutes = require('./routes/managerDashRoutes');
 
 // 5. Database Configuration
 mongoose.connect(process.env.DATABASE, {
@@ -57,12 +56,11 @@ passport.deserializeUser(signup.deserializeUser());
 
 // 8. Route Middleware
 app.use('/', authRoutes);
-app.use('/sales', saleRoutes);
-app.use('/sales', creditSalesRoutes);
-app.use('/', produceRoutes);
-app.use('/', managerRoutes);
-app.use('/', salesAgentRoutes);
-app.use('/director', directorRoutes);
+app.use('/sales', saleRoutes);             
+app.use('/sales', creditSalesRoutes);     
+app.use('/', produceRoutes);                      
+app.use('/director', directorRoutes);      
+app.use('/managerDash', managerDashRoutes);
 
 // 9. Default Route
 app.get('/', (req, res) => {

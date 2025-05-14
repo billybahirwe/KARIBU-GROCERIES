@@ -11,17 +11,21 @@ html
     // Navbar from Credit Sale List
     nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
       .container-fluid
-        a.navbar-brand(href='/sales/saleList') Karibu Groceries
+        a.navbar-brand(href='/sales/dashboard') Karibu Groceries
         button.navbar-toggler(type='button', data-bs-toggle='collapse', data-bs-target='#navbarNav') 
           span.navbar-toggler-icon
         #navbarNav.collapse.navbar-collapse
           ul.navbar-nav.ms-auto
             li.nav-item
+              a.nav-link(href='/sales/dashboard') Dashboard
+            li.nav-item
               a.nav-link(href='/sales/sale') Register Sale
             li.nav-item
               a.nav-link(href='/sales/credit') Register Credit
             li.nav-item
-              a.nav-link(href='/') Home
+              a.nav-link(href='/sales/credit/list') Credit Sale List
+            li.nav-item
+              a.nav-link(href='/sales/stock') Stock View          
             li.nav-item
               a.nav-link(href='/logout') Logout
 

@@ -38,33 +38,23 @@
     margin: 0 1rem;
     font-size: 1.1rem;
   }
-  
-  /* Logo (KGL) colorful */
   .logo {
-    font-family: 'Dancing Script', cursive;
-    font-size: 200%;
-    font-weight: 900;
-    letter-spacing: 2px;
-    color: #333;
-  }
-  
-  /* .logo {
     display: flex;
     align-items: center;
     font-size: 1.8rem;
     font-weight: 900;
-  } */
+  }
   
   .k {
-    color:#e2d40c; /* Orange*/
+    color:#e2d40c;
   }
   
   .g {
-    color: #e811d6; /* Blue */
+    color: #e811d6; 
   }
   
   .l {
-    color: #2ECC71; /* Green */
+    color: #2ECC71; 
   }
   
   /* Main content */

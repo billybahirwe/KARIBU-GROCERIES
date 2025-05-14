@@ -6,12 +6,24 @@ const Sale = require("../models/sale");
 const Produce = require("../models/produce");
 
 // Render sale form
-router.get("/sale", authenticate(["manager", "salesAgent"]), (req, res) => {
+router.get("/sale", authenticate(["salesAgent"]), (req, res) => {
   res.render("sale", { error: null });
 });
 
+// // Render Sales Agent Dashboard
+// router.get("/dashboard", authenticate(["salesAgent"]), (req, res) => {
+//   res.render("salesAgentDashboard", { branch: req.user.branch });
+// });
+// router.get('/dashboard', (req, res) => {
+//   const user = req.user; // user is authenticated
+//   res.render('salesAgentDashboard', {
+//     agentName: user.name,
+//     branch: user.branch
+//   });
+// });
+
 // Create sale (branch enforced from req.user)
-router.post("/sale", authenticate(["manager", "salesAgent"]), async (req, res) => {
+router.post("/sale", authenticate(["salesAgent"]), async (req, res) => {
   try {
     const {
       produceName,
@@ -58,8 +70,38 @@ router.post("/sale", authenticate(["manager", "salesAgent"]), async (req, res) =
   }
 });
 
+// Sales Agent stock view
+router.get("/stock", authenticate(["salesAgent"]), async (req, res) => {
+  try {
+    const branch = req.user.branch;
+
+    const produceItems = await Produce.find({ branch }).lean();
+    const sales = await Sale.find({ branch }).lean();
+
+    const stockData = produceItems.map(item => {
+      const sold = sales
+        .filter(s => s.produceName === item.produceName)
+        .reduce((sum, s) => sum + s.tonnage, 0);
+
+      const remaining = item.tonnage - sold;
+
+      return {
+        produce: item.produceName,
+        tonnage: remaining,
+        alert: remaining < 200
+      };
+    });
+
+    res.render("salesStockView", { stockData, branch });
+  } catch (error) {
+    console.error("Sales Agent stock view error:", error);
+    res.status(500).send("Error retrieving stock data");
+  }
+});
+
+
 // View sales (only for logged-in user's branch)
-router.get("/saleList", authenticate(["manager", "salesAgent"]), async (req, res) => {
+router.get("/saleList", authenticate(["salesAgent"]), async (req, res) => {
   try {
     const sales = await Sale.find({ branch: req.user.branch });
     res.render("salelist", { sales, moment });
@@ -69,7 +111,7 @@ router.get("/saleList", authenticate(["manager", "salesAgent"]), async (req, res
 });
 
 // Render update form (only if sale belongs to user's branch)
-router.get("/updateSale/:id", authenticate(["manager", "salesAgent"]), async (req, res) => {
+router.get("/updateSale/:id", authenticate(["salesAgent"]), async (req, res) => {
   try {
     const sale = await Sale.findOne({ _id: req.params.id, branch: req.user.branch });
 
@@ -82,7 +124,7 @@ router.get("/updateSale/:id", authenticate(["manager", "salesAgent"]), async (re
 });
 
 // Update sale (only if it belongs to user's branch)
-router.post("/updateSale/:id", authenticate(["manager", "salesAgent"]), async (req, res) => {
+router.post("/updateSale/:id", authenticate(["salesAgent"]), async (req, res) => {
   try {
     const result = await Sale.findOneAndUpdate(
       { _id: req.params.id, branch: req.user.branch },
@@ -98,7 +140,7 @@ router.post("/updateSale/:id", authenticate(["manager", "salesAgent"]), async (r
 });
 
 // Delete sale (only if from user's branch)
-router.post("/deleteSale", authenticate(["manager", "salesAgent"]), async (req, res) => {
+router.post("/deleteSale", authenticate(["salesAgent"]), async (req, res) => {
   try {
     const result = await Sale.findOneAndDelete({
       _id: req.body.id,

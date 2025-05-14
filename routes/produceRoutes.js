@@ -71,15 +71,27 @@ router.get("/produce/update/:id", async (req, res) => {
 // 5. Update produce (only if from same branch)
 router.post("/produce/update/:id", upload.single("image"), async (req, res) => {
   try {
-    const produceData = req.body;
+    const updatedData = {
+      produceName: req.body.produceName,
+      type: req.body.type,
+      date: req.body.date,
+      time: req.body.time,
+      tonnage: Number(req.body.tonnage),
+      cost: Number(req.body.cost),
+      dealer: req.body.dealer,
+      branch: req.user.branch,
+      contact: req.body.contact,
+      price: Number(req.body.price),
+    };
 
     if (req.file) {
-      produceData.image = req.file.filename;
+      updatedData.image = req.file.filename;
     }
 
     const result = await Produce.findOneAndUpdate(
       { _id: req.params.id, branch: req.user.branch },
-      produceData
+      updatedData,
+      { new: true }
     );
 
     if (!result) return res.status(403).send("Update not allowed.");
@@ -92,20 +104,22 @@ router.post("/produce/update/:id", upload.single("image"), async (req, res) => {
 });
 
 // 6. Delete produce (only if from same branch)
-router.post("/produce/delete", upload.none(), async (req, res) => {
+router.post("/produce/delete", async (req, res) => {
   try {
-    const result = await Produce.findOneAndDelete({
-      _id: req.body.id,
-      branch: req.user.branch,
+    const { id } = req.body;
+    const produce = await Produce.findOneAndDelete({
+      _id: id,
+      branch: req.user.branch, // Ensures user can only delete from their branch
     });
 
-    if (!result) return res.status(403).send("Delete not allowed.");
+    if (!produce) return res.status(403).send("Delete not allowed.");
 
     res.redirect("/produce/list");
   } catch (err) {
-    console.error(err);
-    res.status(500).send("Failed to delete produce");
+    console.error("Delete error:", err);
+    res.status(500).send("Failed to delete produce.");
   }
 });
+
 
 module.exports = router;

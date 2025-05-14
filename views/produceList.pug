@@ -17,19 +17,19 @@ html
     // Navbar
     nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
       .container-fluid
-        a.navbar-brand(href='/produce/list') Karibu Groceries
+        a.navbar-brand(href='/managerDash/manager/dashboard') Karibu Groceries
         button.navbar-toggler(type='button', data-bs-toggle='collapse', data-bs-target='#navbarNav') 
           span.navbar-toggler-icon
         #navbarNav.collapse.navbar-collapse
           ul.navbar-nav.ms-auto
             li.nav-item
+              a.nav-link(href='/managerDash/manager/dashboard') Darshboard
+            li.nav-item
               a.nav-link(href='/produce/register') Add Produce
+            //- li.nav-item
+            //-   a.nav-link(href='/sales/sale') Register Sale
             li.nav-item
-              a.nav-link(href='/sales/sale') Register Sale
-            li.nav-item
-              a.nav-link(href='/sales/credit') Register Credit
-            li.nav-item
-              a.nav-link(href='/') Home
+              a.nav-link(href='/managerDash/stock') Stock View
             li.nav-item
               a.nav-link(href='/logout') Logout
 

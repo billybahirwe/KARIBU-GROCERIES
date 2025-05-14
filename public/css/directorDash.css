@@ -14,8 +14,11 @@ body {
 
 /* Navbar */
 .navbar {
-  background-color: #005f73 !important;
-  padding: 10px 20px;
+  background-color: #2a711fcc !important;
+  margin: 0px;
+  padding: 10px;
+  padding-bottom: 20px;
+  padding-left: 40px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
@@ -58,7 +61,7 @@ body {
 /* Card Styling */
 .card {
   background-color: #ffffff;
-  border-left: 5px solid #219ebc;
+  border-left: 5px solid rgba(66, 134, 55, 0.8);
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
@@ -85,7 +88,7 @@ body {
 /* Responsive tweaks */
 @media (max-width: 768px) {
   .navbar-nav {
-    background-color: #005f73;
+    background-color: rgba(66, 134, 55, 0.8);
     padding: 10px;
   }
 
@@ -93,24 +96,23 @@ body {
     margin: 10px 0;
   }
 }
+  .logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.8rem;
+    font-weight: 900;
+  }
+  
+  .k {
+    color:#e2d40c;
+  }
+  
+  .g {
+    color: #e811d6; 
+  }
+  
+  .l {
+    color: #2ECC71; 
+  }
 
-/* Logo (KGL) colorful */
-.logo {
-  font-family: 'Dancing Script', cursive;
-  font-size: 200%;
-  font-weight: 900;
-  letter-spacing: 2px;
-  color: #333;
-}
-
-.k {
-  color: #e2d40c; /* Orange-red */
-}
-
-.g {
-  color: #e811d6; /* Blue */
-}
-
-.l {
-  color: #2ECC71; /* Green */
-}
+  

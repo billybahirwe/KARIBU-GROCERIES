@@ -3,6 +3,11 @@ const mongoose = require('mongoose');
 const passportLocalMongoose = require('passport-local-mongoose');
 
 const signupSchema = new mongoose.Schema({
+    name: {                          
+        type: String,
+        trim: true,
+        required: true,
+    },
     username: {
         type: String,
         trim: true,

@@ -3,6 +3,7 @@ const router = express.Router();
 const passport = require("passport");
 const Signup = require("../models/signup");
 const Sale = require("../models/sale");
+const CreditSale = require("../models/creditSale");
 const { authenticate } = require("../middleware/authMiddleware");
 
 // GET: Signup Page
@@ -13,14 +14,14 @@ router.get("/signingup", (req, res) => {
 // POST: Handle Signup
 router.post("/signingup", async (req, res) => {
   try {
-    const { username, email, password, role, branch } = req.body;
+    const {name,username, email, password, role, branch } = req.body;
 
     const existingUser = await Signup.findOne({ email });
     if (existingUser) {
       return res.status(400).render("signup", { error: "Email already exists." });
     }
 
-    await Signup.register({ username, email, role, branch }, password);
+    await Signup.register({ name,username, email, role, branch }, password);
     res.redirect("/login");
   } catch (error) {
     console.error("Signup Error:", error);
@@ -43,9 +44,9 @@ router.post("/login", passport.authenticate("local", { failureRedirect: "/login"
   // Redirect by role
   switch (req.user.role) {
     case "manager":
-      return res.redirect("/produce/list");
+      return res.redirect("/managerDash/manager/dashboard");
     case "salesAgent":
-      return res.redirect("/sales/saleList");
+      return res.redirect("/sales/dashboard");
     case "director":
       return res.redirect("/directorDash");
     default:
@@ -66,8 +67,11 @@ router.get("/managerDash", authenticate(["manager"]), (req, res) => {
   res.render("managerDashboard", { branch: req.user.branch });
 });
 
-router.get("/salesAgentDash", authenticate(["salesAgent"]), (req, res) => {
-  res.render("saleAgentDashboard", { branch: req.user.branch });
+router.get("/sales/dashboard", authenticate(["salesAgent"]), (req, res) => {
+  res.render("saleAgentDashboard", {
+    agentName: req.user.name,
+    branch: req.user.branch
+  });
 });
 
 router.get("/directorDash", authenticate(["director"]), async (req, res) => {
@@ -78,10 +82,21 @@ router.get("/directorDash", authenticate(["director"]), async (req, res) => {
     const amountPerBranch = await Sale.aggregate([
       { $group: { _id: "$branch", totalAmount: { $sum: "$amountPaid" } } },
     ]);
+    const totalCreditSalesResult = await CreditSale.aggregate([
+      { $group: { _id: null, totalCredit: { $sum: "$amountDue" } } },
+    ]);
+    const totalCreditSales = totalCreditSalesResult[0]?.totalCredit || 0;
+
+    const overallPerformanceResult = await Sale.aggregate([
+      { $group: { _id: null, total: { $sum: "$amountPaid" } } },
+    ]);
+    const overallPerformance = overallPerformanceResult[0]?.total || 0;
 
     res.render("directorDashboard", {
       tonnagePerBranch,
       amountPerBranch,
+      totalCreditSales,
+      overallPerformance
     });
   } catch (err) {
     console.error("Error loading dashboard:", err);

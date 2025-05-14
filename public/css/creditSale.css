@@ -1,40 +1,50 @@
-/* Forms and Form Elements (For Credit Sales Form) */
+/* Form Container */
 .form-container {
-    padding: 2rem;
-    background-color: white;
-    margin: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  form label {
-    display: block;
-    margin: 1rem 0 0.5rem;
-    font-weight: bold;
-  }
-  
-  form input {
-    width: 100%;
-    padding: 0.8rem;
-    font-size: 1rem;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    margin-bottom: 1rem;
-  }
-  
-  form button {
-    padding: 0.8rem;
-    background-color: #27ae60;
-    color: white;
-    border: none;
-    font-size: 1.1rem;
-    cursor: pointer;
-    width: 100%;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-  }
-  
-  form button:hover {
-    background-color: #2ecc71;
-  }
-  
+  padding: 2rem;
+  background-color: rgba(255, 255, 255, 0.95); /* semi-opaque white to stand above background */
+  margin: 2rem 0;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  position: relative;
+}
+
+/* Form Inputs */
+form label {
+  display: block;
+  margin: 1rem 0 0.5rem;
+  font-weight: bold;
+}
+
+form input {
+  width: 100%;
+  padding: 0.8rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-bottom: 1rem;
+}
+
+/* Submit Button */
+form button {
+  padding: 0.8rem;
+  background-color: #27ae60;
+  color: white;
+  border: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+form button:hover {
+  background-color: #2ecc71;
+}
+.form-title {
+  color: rgb(140, 145, 168); /* Or any high-contrast color */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Optional: adds better readability */
+  font-weight: bold;
+}
+
+

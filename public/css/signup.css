@@ -1,24 +1,128 @@
 body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
     background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
 }
+
+/* Card and Layout */
 .card {
+    background: #428637cc !important;
+    border: none !important;
+    padding: 12px;                  /* Reduced padding */
     border-radius: 8px;
     box-shadow: 0px 0px 8px rgba(6, 6, 6, 0.1);
-    padding: 15px;
+    width: 900px;
+    max-width: 98%;
+    min-height: auto;
 }
+
+/* Horizontal grouping for form rows */
+.card-body {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;                    /* Slightly smaller gap */
+    padding: 0.4rem !important;
+}
+
+/* Two-column layout */
+.card-body .form-group {
+    flex: 1 1 48%;
+    margin-bottom: 6px;            /* Slightly reduced */
+}
+
+/* Full-width elements */
+.card-body .form-group.full-width {
+    flex: 1 1 100%;
+}
+
+.card-header {
+    background-color: transparent;
+    padding-bottom: 8px;           /* Slightly less */
+}
+
+/* Inputs */
 .form-control, .form-select {
     font-size: 14px;
-    padding: 8px;
+    padding: 4px;
+    color: black !important;
+    background-color: white !important;
+    width: 100%;
 }
+
 .form-control:focus, .form-select:focus {
-    border-color: #007bff;
-    box-shadow: 0px 0px 4px rgba(0, 123, 255, 0.5);
+    border-color: black !important;
+    box-shadow: none !important;
 }
-.btn {
+
+/* Radio inputs and labels */
+input[type="radio"] {
+    accent-color: black;
+}
+
+label, .form-check-label {
+    color: black !important;
     font-size: 14px;
-    padding: 8px;
 }
-.error {
-    color: red;
-    font-size: 12px;
+
+/* Select options */
+select option {
+    color: black;
+    background-color: white;
+}
+
+/* Button */
+.btn {
+    background: #282829;
+    margin-top: 8px;
+    color: white;
+    padding: 6px;                  /* Slightly less vertical space */
+    border: none;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #cabd08;
+    color: black;
+}
+
+/* Link styling */
+a {
+    color: black !important;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Heading */
+h2 {
+    font-weight: bold;
+    font-size: 22px;
+    margin-bottom: 8px;
+}
+
+/* Error text */
+.alert-danger {
+    font-size: 14px;
+}
+
+.mb-1 {
+    margin-bottom: 0.2rem !important;
+}
+
+.form-check {
+    margin-bottom: 0 !important;
+}
+
+.d-flex.gap-3 {
+    gap: 0.4rem;
+    flex-wrap: wrap;
 }

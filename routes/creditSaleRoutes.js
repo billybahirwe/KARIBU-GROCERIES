@@ -4,9 +4,14 @@ const CreditSale = require('../models/creditSale');
 
 // GET credit sales list
 router.get('/credit/list', async (req, res) => {
-  const branch = req.user.branch;
-  const creditSales = await CreditSale.find({ branch }).sort({ dueDate: 1 });
-  res.render('creditSaleList', { creditSales });
+  try {
+    const branch = req.user.branch;
+    const creditSales = await CreditSale.find({ branch }).sort({ dueDate: 1 });
+    res.render('creditSaleList', { creditSales });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('An error occurred while fetching credit sales.');
+  }
 });
 
 // GET credit sale form
@@ -22,7 +27,7 @@ router.post('/credit', async (req, res) => {
   try {
     const credit = new CreditSale({
       ...req.body,
-      branch: req.user.branch //  correctly attach branch
+      branch: req.user.branch // correctly attach branch
     });
     await credit.save();
     res.redirect('/sales/credit/list');
@@ -37,44 +42,60 @@ router.post('/credit', async (req, res) => {
 
 // GET edit credit sale form
 router.get('/credit/edit/:id', async (req, res) => {
-  const credit = await CreditSale.findOne({
-    _id: req.params.id,
-    branch: req.user.branch
-  });
+  try {
+    const credit = await CreditSale.findOne({
+      _id: req.params.id,
+      branch: req.user.branch
+    });
 
-  if (!credit) {
-    return res.status(403).send('Access denied.');
+    if (!credit) {
+      return res.status(403).send('Access denied.');
+    }
+
+    res.render('editCreditSale', { credit, error: null });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('An error occurred while fetching credit sale details.');
   }
-
-  res.render('editCreditSale', { credit, error: null });
 });
 
 // POST update credit sale
 router.post('/credit/edit/:id', async (req, res) => {
-  const result = await CreditSale.findOneAndUpdate(
-    { _id: req.params.id, branch: req.user.branch },
-    req.body
-  );
+  try {
+    const result = await CreditSale.findOneAndUpdate(
+      { _id: req.params.id, branch: req.user.branch },
+      req.body,
+      { new: true } // Return the updated document
+    );
 
-  if (!result) {
-    return res.status(403).send('Update not allowed.');
+    if (!result) {
+      return res.status(403).send('Update not allowed.');
+    }
+
+    res.redirect('/sales/credit/list');
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('An error occurred while updating the credit sale.');
   }
-
-  res.redirect('/sales/credit/list');
 });
 
 // POST delete credit sale
 router.post('/credit/delete/:id', async (req, res) => {
-  const result = await CreditSale.findOneAndDelete({
-    _id: req.params.id,
-    branch: req.user.branch
-  });
+  try {
+    const result = await CreditSale.findOneAndDelete({
+      _id: req.params.id,
+      branch: req.user.branch
+    });
 
-  if (!result) {
-    return res.status(403).send('Delete not allowed.');
+    if (!result) {
+      return res.status(403).send('Delete not allowed.');
+    }
+
+    res.redirect('/sales/credit/list');
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('An error occurred while deleting the credit sale.');
   }
-
-  res.redirect('/sales/credit/list');
 });
 
 module.exports = router;
