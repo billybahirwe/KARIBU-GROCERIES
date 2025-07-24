@@ -49,7 +49,7 @@ const produceSchema = new mongoose.Schema({
 
   branch: {
     type: String,
-    enum: ['Maganjo', 'Matugga'], // If you only support these
+    enum: ['Maganjo', 'Matugga'],
     required: [true, "Branch is required"]
   },
 

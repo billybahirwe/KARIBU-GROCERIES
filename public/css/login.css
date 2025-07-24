@@ -30,6 +30,20 @@ input {
     text-align: center;
 }
 
+input.is-invalid {
+    border-color: red;
+    box-shadow: 0 0 5px red;
+    outline: none;
+}
+
+.text-danger {
+    color: red;
+    font-size: 12px;
+    margin-top: -8px;
+    margin-bottom: 8px;
+    display: block;
+}
+
 .btn {
     background: #282829;
     color: white;
@@ -48,13 +62,14 @@ input {
 .error {
     color: red;
     font-size: 14px;
+    margin-bottom: 10px;
 }
+
 .login-container a {
     color: black;
     text-decoration: none;
-  }
-  
-  .login-container a:hover {
+}
+
+.login-container a:hover {
     text-decoration: underline;
-  }
-  
+}

@@ -5,19 +5,24 @@ html
     meta(name='viewport' content='width=device-width, initial-scale=1.0')
     title KGL Company Login
     link(rel='stylesheet', href='/css/background.css')
-    link(rel='stylesheet' href='/css/login.css')
-
+    link(rel='stylesheet', href='/css/login.css')
   body
     .login-container
       h2 KGL Login
 
-      form(action="/login", method="post", onsubmit="return validateForm()")
-        input#username(type='text' placeholder='Email' name='email')
-        input#password(type='password' placeholder='Password' name='password')
+      form#loginForm(action="/login", method="post", novalidate)
+        input#username(type='text', placeholder='Email', name='email')
+        small#emailError.text-danger(style='display:none;')
+
+        input#password(type='password', placeholder='Password', name='password')
+        small#passwordError.text-danger(style='display:none;')
+
         p#error-message.error
+
         button.btn(type='submit') Login
+
         p
           small
             a(href='/signingup') Not registered yet? Sign up.
 
-    script(src='/js/login.js')
+    script(src='/js/login.js' defer)

@@ -1,47 +1,61 @@
 document.getElementById("signupForm").addEventListener("submit", function (event) {
-    let isValid = true;
+  let isValid = true;
 
-    document.querySelectorAll(".error").forEach(el => el.innerText = "");
+  // Clear previous errors
+  document.querySelectorAll(".text-danger").forEach(el => el.innerText = "");
+  document.querySelectorAll(".is-invalid").forEach(el => el.classList.remove("is-invalid"));
 
-    const username = document.getElementById("username").value.trim();
-    if (username.length < 3) {
-        document.getElementById("usernameError").innerText = "Username must be at least 3 characters.";
-        isValid = false;
-    }
+  const name = document.getElementById("name");
+  if (name.value.trim() === "") {
+    name.classList.add("is-invalid");
+    document.getElementById("nameError").innerText = "Name is required.";
+    isValid = false;
+  }
 
-    const email = document.getElementById("email").value.trim();
-    const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
-    if (!email.match(emailPattern)) {
-        document.getElementById("emailError").innerText = "Enter a valid email.";
-        isValid = false;
-    }
+  const username = document.getElementById("username");
+  if (username.value.trim().length < 3) {
+    username.classList.add("is-invalid");
+    document.getElementById("usernameError").innerText = "Username must be at least 3 characters.";
+    isValid = false;
+  }
 
-    const password = document.getElementById("password").value.trim();
-    if (password.length < 6) {
-        document.getElementById("passwordError").innerText = "Password must be at least 6 characters.";
-        isValid = false;
-    }
+  const email = document.getElementById("email");
+  const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+  if (!email.value.trim().match(emailPattern)) {
+    email.classList.add("is-invalid");
+    document.getElementById("emailError").innerText = "Enter a valid email.";
+    isValid = false;
+  }
 
-    const roles = document.getElementsByName("role");
-    let roleSelected = false;
-    for (let role of roles) {
-        if (role.checked) {
-            roleSelected = true;
-            break;
-        }
-    }
-    if (!roleSelected) {
-        document.getElementById("roleError").innerText = "Please select a role.";
-        isValid = false;
-    }
+  const password = document.getElementById("password");
+  if (password.value.trim().length < 6) {
+    password.classList.add("is-invalid");
+    document.getElementById("passwordError").innerText = "Password must be at least 6 characters.";
+    isValid = false;
+  }
 
-    const branch = document.getElementById("branch").value;
-    if (branch === "") {
-        document.getElementById("branchError").innerText = "Please select a branch.";
-        isValid = false;
+  const roles = document.getElementsByName("role");
+  let roleSelected = false;
+  roles.forEach(role => {
+    if (role.checked) {
+      roleSelected = true;
     }
+  });
 
-    if (!isValid) {
-        event.preventDefault();
-    }
+  if (!roleSelected) {
+    document.getElementById("roleError").innerText = "Please select a role.";
+    roles.forEach(role => role.classList.add("is-invalid"));
+    isValid = false;
+  }
+
+  const branch = document.getElementById("branch");
+  if (branch.value === "") {
+    branch.classList.add("is-invalid");
+    document.getElementById("branchError").innerText = "Please select a branch.";
+    isValid = false;
+  }
+
+  if (!isValid) {
+    event.preventDefault();
+  }
 });

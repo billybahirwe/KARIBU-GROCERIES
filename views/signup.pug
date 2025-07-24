@@ -17,28 +17,32 @@ html
             .card-body.p-3
               if error
                 .alert.alert-danger.text-center #{error}
-              form#signupForm(action='/signingup' method='post')
+              form#signupForm(action='/signingup' method='post' novalidate)
                 .mb-1
                   label.form-label(for='name') Name
-                  input#name.form-control(type='text' name='name' required)
+                  input#name.form-control(type='text' name='name')
+                  small#nameError.text-danger.d-block
 
                 .mb-1
                   label.form-label(for='username') Username
-                  input#username.form-control(type='text' name='username' required)
+                  input#username.form-control(type='text' name='username')
+                  small#usernameError.text-danger.d-block
 
                 .mb-1
                   label.form-label(for='email') Email
-                  input#email.form-control(type='email' name='email' required)
+                  input#email.form-control(type='email' name='email')
+                  small#emailError.text-danger.d-block
 
                 .mb-1
                   label.form-label(for='password') Password
-                  input#password.form-control(type='password' name='password' required)
+                  input#password.form-control(type='password' name='password')
+                  small#passwordError.text-danger.d-block
 
                 .mb-1
                   label.form-label Role
                   .d-flex.gap-3
                     .form-check
-                      input.form-check-input(type='radio' name='role' id='director' value='director' required)
+                      input.form-check-input(type='radio' name='role' id='director' value='director')
                       label.form-check-label(for='director') Director
                     .form-check
                       input.form-check-input(type='radio' name='role' id='salesAgent' value='salesAgent')
@@ -46,15 +50,17 @@ html
                     .form-check
                       input.form-check-input(type='radio' name='role' id='manager' value='manager')
                       label.form-check-label(for='manager') Manager
+                  small#roleError.text-danger.d-block
 
                 .mb-2
                   label.form-label(for='branch') Branch
-                  select#branch.form-select(name='branch' required)
+                  select#branch.form-select(name='branch')
                     option(value='') -- Select a Branch --
                     option(value='Maganjo') Maganjo
                     option(value='Matugga') Matugga
+                  small#branchError.text-danger.d-block
 
-                button.btn(type='submit') Signup
+                button.btn.btn-primary(type='submit') Signup
 
                 p.mt-2.text-center
                   small

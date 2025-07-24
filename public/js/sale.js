@@ -25,6 +25,6 @@ document.getElementById('salesForm').addEventListener('submit', function(event) 
         document.getElementById('message').innerText = message;
     } else {
         document.getElementById('message').innerText = "Form submitted successfully!";
-        // Here you can send data to the backend
+
     }
 });

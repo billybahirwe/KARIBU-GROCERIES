@@ -7,6 +7,14 @@ html
     link(rel='stylesheet', href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css')
     link(rel='stylesheet', href='/css/sale.css')
     link(rel='stylesheet', href='/css/background.css')
+    style.
+      .invalid-feedback {
+        display: none;
+      }
+      .was-validated .form-control:invalid ~ .invalid-feedback,
+      .was-validated .form-select:invalid ~ .invalid-feedback {
+        display: block;
+      }
 
   body
     nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
@@ -19,53 +27,76 @@ html
             li.nav-item
               a.nav-link(href='/sales/dashboard') Dashboard
             li.nav-item 
-            a.nav-link(href='/sales/credit') Register Credit
+              a.nav-link(href='/sales/credit') Register Credit
             li.nav-item
               a.nav-link(href='/sales/saleList') Sales List
             li.nav-item
               a.nav-link(href='/sales/stock')  View Stock        
             li.nav-item
               a.nav-link(href='/logout') Logout
-           
 
     .container.mt-5
       h2 Record Produce Sale 
 
-      form(method='POST', action='/sales/sale')
+      // Bootstrap validation classes
+      form.needs-validation(method='POST', action='/sales/sale', novalidate)
         .mb-3
           label(for='produceName') Produce Name:
-          input#produceName.form-control(type='text', name='produceName')
+          input#produceName.form-control(type='text', name='produceName', required)
+          div.invalid-feedback Please enter the produce name.
 
         .mb-3
           label(for='tonnage') Tonnage (kgs):
-          input#tonnage.form-control(type='number', name='tonnage')
+          input#tonnage.form-control(type='number', name='tonnage', required min='1')
+          div.invalid-feedback Please enter a valid tonnage.
 
         .mb-3
           label(for='amountPaid') Amount Paid (UGX):
-          input#amountPaid.form-control(type='text', name='amountPaid')
+          input#amountPaid.form-control(type='number', name='amountPaid', required min='1000')
+          div.invalid-feedback Please enter a valid amount (minimum UGX 1,000).
 
         .mb-3
           label(for='buyerName') Buyer’s Name:
-          input#buyerName.form-control(type='text', name='buyerName')
+          input#buyerName.form-control(type='text', name='buyerName', required)
+          div.invalid-feedback Please enter the buyer’s name.
 
         .mb-3
           label(for='salesAgent') Sales Agent’s Name:
-          input#salesAgent.form-control(type='text', name='salesAgent')
+          input#salesAgent.form-control(type='text', name='salesAgent', required)
+          div.invalid-feedback Please enter the sales agent’s name.
 
         .mb-3
           label(for='branch') Branch:
-          select#branch.form-control(name='branch')
+          select#branch.form-select(name='branch', required)
             option(value='') -- Select Branch --
             option(value='Maganjo') Maganjo
             option(value='Matugga') Matugga
+          div.invalid-feedback Please select a branch.
 
         .mb-3
           label(for='dateTime') Date & Time:
-          input#dateTime.form-control(type='datetime-local', name='dateTime')
+          input#dateTime.form-control(type='datetime-local', name='dateTime', required)
+          div.invalid-feedback Please provide date and time of sale.
 
         button.btn.btn-primary(type='submit') Submit
 
       if error
         p.text-danger.mt-3= error
 
-    script(src='/js/script.js' defer)
+    // Bootstrap JS + Validation Script
+    script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js')
+    script.
+      // Bootstrap form validation script
+      (() => {
+        'use strict';
+        const forms = document.querySelectorAll('.needs-validation');
+        Array.from(forms).forEach(form => {
+          form.addEventListener('submit', event => {
+            if (!form.checkValidity()) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+          }, false);
+        });
+      })();
